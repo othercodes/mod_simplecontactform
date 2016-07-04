@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Simple Contact Form</name>
+    <author>Unay Santisteban</author>
+    <creationDate>Julio 2016</creationDate>
+    <copyright>Copyright (C) 2016 OtherCode. All rights reserved.</copyright>
+    <license>MIT</license>
+    <authorEmail>usantisteban@othercode.es</authorEmail>
+    <authorUrl>othercode.es</authorUrl>
+    <version>1.0.0</version>
+    <description>MOD_SIMPLECONTACTFORM_DESC</description>
+    <files>
+        <filename>mod_simplecontactform.xml</filename>
+        <filename module="mod_simplecontactform">mod_simplecontactform.php</filename>
+        <filename>index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+        <folder>language</folder>
+    </files>
+    <media folder="media" destination="mod_simplecontactform">
+        <folder>css</folder>
+    </media>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+
+            </fieldset>
+
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+                <field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+                <field name="cachemode" type="hidden" default="static">
+                    <option value="static"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server name="OtherCode Extension Directory" priority="1" type="collection">http://othercode.es/updates/index.xml</server>
+    </updateservers>
+</extension>
