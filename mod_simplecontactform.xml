@@ -26,6 +26,10 @@
             <fieldset name="basic" addfieldpath="/modules/mod_simplecontactform/models">
                 <field name="sendto" type="contact" label="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_DESC" />
                 <field name="prevtext" type="editor" rows="5" default="" label="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_DESC" />
+                <field name="showlabels" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="defaultcss" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
