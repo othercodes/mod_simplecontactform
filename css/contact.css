@@ -1,0 +1,17 @@
+#oc-simplecontactform input {
+    width: 98%;
+}
+
+#oc-simplecontactform textarea {
+    width: 98%;
+    max-width: 98%;
+    min-height: 120px;
+}
+
+#oc-simplecontactform label {
+    font-weight: bold;
+}
+
+#oc-simplecontactform .oc-prev-text {
+    margin: 20px 0;
+}

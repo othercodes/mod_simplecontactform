@@ -34,6 +34,7 @@ defined('_JEXEC') or die;
             <textarea class="form-control" id="comment" name="comment" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT_DETAIL'); ?>" required></textarea>
         </div>
         <button type="submit" class="btn btn-default"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBMIT'); ?></button>
+        <button type="reset" class="btn btn-default"><?php echo JText::_('MOD_SIMPLECONTACTFORM_RESET'); ?></button>
     </form>
 
 </div>

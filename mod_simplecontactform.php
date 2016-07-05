@@ -67,7 +67,7 @@ if (isset($send)) {
             $query = $db->getQuery(true)
                 ->select('email_to')
                 ->from('#__contact_details AS a')
-                ->where('a.id = ' . $params->get('sendto'))
+                ->where('a.id = ' . (int)$params->get('sendto'))
                 ->where('a.published = 1');
             $db->setQuery($query);
 
@@ -77,7 +77,6 @@ if (isset($send)) {
         } catch (RuntimeException $e) {
             throw new Exception($e->getMessage(), 500);
         }
-
     }
 
     /**
