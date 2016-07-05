@@ -46,6 +46,6 @@
         </fields>
     </config>
     <updateservers>
-        <server name="OtherCode Extension Directory" priority="1" type="collection">http://othercode.es/updates/index.xml</server>
+        <server name="OtherCode Extension Directory" priority="1" type="collection">http://updates.othercode.es/index.xml</server>
     </updateservers>
 </extension>
