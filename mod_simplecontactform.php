@@ -6,7 +6,6 @@
  * @copyright Copyright (C) 2016 OtherCode. All rights reserved.
  * @license MIT
  */
-
 defined('_JEXEC') or die('Restricted access');
 
 /**
@@ -98,7 +97,7 @@ if (isset($send)) {
     if ($issend !== true) {
 
         /**
-         * Something goes wrong... handle it
+         * @TODO Something goes wrong... handle it
          */
     } else {
 

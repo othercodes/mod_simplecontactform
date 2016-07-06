@@ -6,6 +6,10 @@ JFormHelper::loadFieldClass('list');
 
 /**
  * Class JFormFieldBannerClient
+ * @package OtherCode.Joomla.SimpleContactForm
+ * @subpackage mod_simplecontactform
+ * @copyright Copyright (C) 2016 OtherCode. All rights reserved.
+ * @license MIT
  */
 class JFormFieldContact extends JFormFieldList
 {
