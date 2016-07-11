@@ -97,8 +97,9 @@ if (isset($send)) {
     if ($issend !== true) {
 
         /**
-         * @TODO Something goes wrong... handle it
+         * Something goes wrong... handle it
          */
+        JFactory::getApplication()->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(), 'error');
     } else {
 
         /**
