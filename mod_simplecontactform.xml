@@ -25,7 +25,6 @@
         <fields name="params">
             <fieldset name="basic" addfieldpath="/modules/mod_simplecontactform/models">
                 <field name="sendto" type="contact" label="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_DESC" />
-                <field name="prevtext" type="editor" rows="5" default="" label="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_DESC" />
                 <field name="showlabels" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
@@ -34,10 +33,16 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <field name="showupload" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWUPLOAD_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWUPLOAD_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="uploadpath" type="folderlist" default="uploads" directory="images" label="MOD_SIMPLECONTACTFORM_FIELD_UPLOADFORLDER_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_UPLOADFORLDER_DESC" />
                 <field name="defaultcss" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <field name="prevtext" type="editor" rows="5" default="" label="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_DESC" />
             </fieldset>
             <fieldset name="advanced">
                 <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>

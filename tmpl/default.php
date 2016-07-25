@@ -31,6 +31,10 @@ defined('_JEXEC') or die;
             <input type="text" class="form-control" id="subject" name="subject" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?>" required>
         </div>
         <div class="form-group">
+            <?php if ($labels === '1') { ?><label for="ufile"><?php echo JText::_('MOD_SIMPLECONTACTFORM_UPLOAD'); ?></label><?php } ?>
+            <input type="file" id="ufile" name="ufile" accept="image/*" required>
+        </div>
+        <div class="form-group">
             <?php if ($labels === '1') { ?><label for="comment"><?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT'); ?></label><?php } ?>
             <textarea class="form-control" id="comment" name="comment" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT_DETAIL'); ?>" required></textarea>
         </div>

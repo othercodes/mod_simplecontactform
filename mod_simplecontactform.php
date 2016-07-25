@@ -34,6 +34,7 @@ if (isset($send)) {
     $email = $input->post->get('email', null, 'raw');
     $name = $input->post->get('name', null, 'str');
     $subject = $input->post->get('subject', null, 'str');
+    $file = $input->files->get('ufile');
     $comment = htmlspecialchars($input->post->get('comment', null, 'str'));
 
     /**
@@ -89,6 +90,21 @@ if (isset($send)) {
     $mailer->addRecipient($recipient);
     $mailer->setSubject($subject);
     $mailer->setBody($comment);
+
+    /**
+     * Set the attached file if exists, by default we
+     * save the uploaded file in the images/uploads but
+     * we can change this folder in the module configuration
+     */
+    if (isset($file)) {
+
+        $filename = JFile::makeSafe($file['name']);
+        $destiny = JPATH_SITE . "/images/" . $params->get('uploadpath') . "/" . date('YmdHis') . '-' . $filename;
+
+        if (JFile::upload($file['tmp_name'], $destiny)) {
+            $mailer->addAttachment($destiny);
+        }
+    }
 
     /**
      * Send the email!
