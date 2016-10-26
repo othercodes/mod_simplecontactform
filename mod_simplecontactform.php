@@ -127,6 +127,7 @@ if (isset($send)) {
 
 $labels = $params->get('showlabels');
 $reset = $params->get('showreset');
+$showupload = $params->get('showupload');
 $prevtext = htmlspecialchars($params->get('prevtext'));
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
