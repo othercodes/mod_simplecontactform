@@ -30,23 +30,33 @@ defined('_JEXEC') or die;
             <?php if ($labels === '1') { ?><label for="subject"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?></label><?php } ?>
             <input type="text" class="form-control" id="subject" name="subject" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?>" required>
         </div>
-        <?php if($showupload === '1') {?>
-        <div class="form-group">
-            <?php if ($labels === '1') { ?><label for="ufile"><?php echo JText::_('MOD_SIMPLECONTACTFORM_UPLOAD'); ?></label><?php } ?>
-            <input type="file" id="ufile" name="ufile" accept="image/*" required>
-        </div>
+        <?php if ($showcontactdropdown === '1') { ?>
+            <div class="form-group">
+                <?php if ($labels === '1') { ?><label for="destiny"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?></label><?php } ?>
+                <select class="form-control" id="destiny" name="destiny" required>
+                    <?php foreach ($contactList as $item) { ?>
+                        <option value="<?php echo $item->value; ?>"><?php echo $item->text; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        <?php } ?>
+        <?php if ($showupload === '1') { ?>
+            <div class="form-group">
+                <?php if ($labels === '1') { ?><label for="ufile"><?php echo JText::_('MOD_SIMPLECONTACTFORM_UPLOAD'); ?></label><?php } ?>
+                <input type="file" id="ufile" name="ufile" accept="*/*" required>
+            </div>
         <?php } ?>
         <div class="form-group">
             <?php if ($labels === '1') { ?><label for="comment"><?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT'); ?></label><?php } ?>
             <textarea class="form-control" id="comment" name="comment" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT_DETAIL'); ?>" required></textarea>
         </div>
-	
-	<div class="button-group">
+
+        <div class="button-group">
             <button type="submit" class="btn btn-default"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBMIT'); ?></button>
-            <?php if($reset === '1') { ?>
-            <button type="reset" class="btn btn-default"><?php echo JText::_('MOD_SIMPLECONTACTFORM_RESET'); ?></button>
+            <?php if ($reset === '1') { ?>
+                <button type="reset" class="btn btn-default"><?php echo JText::_('MOD_SIMPLECONTACTFORM_RESET'); ?></button>
             <?php } ?>
-	</div>
+        </div>
     </form>
 
 </div>

@@ -7,7 +7,7 @@
     <license>MIT</license>
     <authorEmail>usantisteban@othercode.es</authorEmail>
     <authorUrl>othercode.es</authorUrl>
-    <version>1.2.1</version>
+    <version>1.3.0</version>
     <description>MOD_SIMPLECONTACTFORM_DESC</description>
     <files>
         <filename>mod_simplecontactform.xml</filename>
@@ -25,6 +25,11 @@
         <fields name="params">
             <fieldset name="basic" addfieldpath="/modules/mod_simplecontactform/models">
                 <field name="sendto" type="contact" label="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_DESC" />
+                <field name="category" type="category" extension="com_contact" label="MOD_SIMPLECONTACTFORM_FIELD_CATEGORY_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_CATEGORY_DESC" />
+                <field name="showcontactdropdown" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWCONTACTDROPDOWN_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWCONTACTDROPDOWN_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="showlabels" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>

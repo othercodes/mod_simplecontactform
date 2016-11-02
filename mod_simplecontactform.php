@@ -4,17 +4,24 @@
  * @package OtherCode.Joomla.SimpleContactForm
  * @subpackage mod_simplecontactform
  * @copyright Copyright (C) 2016 OtherCode. All rights reserved.
+ * @version 1.3.0
  * @license MIT
  */
 defined('_JEXEC') or die('Restricted access');
+
+
 
 /**
  * Load the main systems
  *  - Input
  *  - Mailer
+ *  - Data model
  */
 $input = JFactory::getApplication()->input;
 $mailer = JFactory::getMailer();
+
+JFormHelper::addFieldPath(__DIR__ . '/models');
+$contactModel = JFormHelper::loadFieldType('Contact', false);
 
 /**
  * Load the default css if needed
@@ -37,45 +44,37 @@ if (isset($send)) {
     $file = $input->files->get('ufile');
     $comment = htmlspecialchars($input->post->get('comment', null, 'str'));
 
-    /**
-     * Check and load the sender name and email.
-     */
-    if ($params->get('sendto') === '0') {
 
-        /**
-         * If ID is 0 the load default configuration from
-         * main site configuration (configuration.php).
-         */
-        try {
+    if($input->post->get('destiny', null) ==! null) {
 
-            $config = JFactory::getConfig();
-            $recipient = $config->get('mailfrom');
-
-        } catch (RuntimeException $e) {
-            throw new Exception($e->getMessage(), 500);
-        }
+        $recipient = $contactModel->getContactEmailByID($input->post->get('destiny'));
 
     } else {
 
         /**
-         * If not load the configuration from the selected
-         * contact element.
+         * Check and load the sender name and email.
          */
-        try {
+        if ($params->get('sendto') === '0') {
 
-            $db = JFactory::getDbo();
-            $query = $db->getQuery(true)
-                ->select('email_to')
-                ->from('#__contact_details AS a')
-                ->where('a.id = ' . (int)$params->get('sendto'))
-                ->where('a.published = 1');
-            $db->setQuery($query);
+            /**
+             * If ID is 0 the load default configuration from
+             * main site configuration (configuration.php).
+             */
+            try {
 
-            $contact = $db->loadObject();
-            $recipient = $contact->email_to;
+                $config = JFactory::getConfig();
+                $recipient = $config->get('mailfrom');
 
-        } catch (RuntimeException $e) {
-            throw new Exception($e->getMessage(), 500);
+            } catch (RuntimeException $e) {
+                throw new Exception($e->getMessage(), 500);
+            }
+
+        } else {
+
+            /**
+             * If ID is NOT 0 we load the required contact email.
+             */
+            $recipient = $contactModel->getContactEmailByID($params->get('sendto'));
         }
     }
 
@@ -123,6 +122,13 @@ if (isset($send)) {
          */
         JFactory::getApplication()->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'), 'message');
     }
+}
+
+$showcontactdropdown = $params->get('showcontactdropdown');
+
+$contactList = array();
+if($showcontactdropdown === '1') {
+    $contactList = $contactModel->getContactsByCategoryID($params->get('category'));
 }
 
 $labels = $params->get('showlabels');
