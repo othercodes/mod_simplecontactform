@@ -16,20 +16,31 @@ defined('_JEXEC') or die;
     <?php } ?>
 
     <form id="oc-form" name="oc-form" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="send" value="1">
+        <input type="hidden" name="send" value="<?php echo $instance; ?>">
+        <?php echo JHtml::_('form.token'); ?>
 
-        <div class="form-group">
-            <?php if ($labels === '1') { ?><label for="email"><?php echo JText::_('MOD_SIMPLECONTACTFORM_EMAIL'); ?></label><?php } ?>
-            <input type="email" class="form-control" id="email" name="email" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_EMAIL'); ?>" required>
-        </div>
+        <?php if ($showemail === '1') { ?>
+            <div class="form-group">
+                <?php if ($labels === '1') { ?><label for="email"><?php echo JText::_('MOD_SIMPLECONTACTFORM_EMAIL'); ?></label><?php } ?>
+                <input type="email" class="form-control" id="email" name="email" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_EMAIL'); ?>" required>
+            </div>
+        <?php } ?>
         <div class="form-group">
             <?php if ($labels === '1') { ?><label for="name"><?php echo JText::_('MOD_SIMPLECONTACTFORM_NAME'); ?></label><?php } ?>
             <input type="text" class="form-control" id="name" name="name" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_NAME'); ?>" required>
         </div>
-        <div class="form-group">
-            <?php if ($labels === '1') { ?><label for="subject"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?></label><?php } ?>
-            <input type="text" class="form-control" id="subject" name="subject" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?>" required>
-        </div>
+        <?php if ($showsubject === '1') { ?>
+            <div class="form-group">
+                <?php if ($labels === '1') { ?><label for="subject"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?></label><?php } ?>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?>" required>
+            </div>
+        <?php } ?>
+        <?php if ($showphone === '1') { ?>
+            <div class="form-group">
+                <?php if ($labels === '1') { ?><label for="phone"><?php echo JText::_('MOD_SIMPLECONTACTFORM_PHONE'); ?></label><?php } ?>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_PHONE'); ?>" required>
+            </div>
+        <?php } ?>
         <?php if ($showcontactdropdown === '1') { ?>
             <div class="form-group">
                 <?php if ($labels === '1') { ?><label for="destiny"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?></label><?php } ?>
@@ -43,13 +54,18 @@ defined('_JEXEC') or die;
         <?php if ($showupload === '1') { ?>
             <div class="form-group">
                 <?php if ($labels === '1') { ?><label for="ufile"><?php echo JText::_('MOD_SIMPLECONTACTFORM_UPLOAD'); ?></label><?php } ?>
-                <input type="file" id="ufile" name="ufile" accept="*/*" required>
+                <input type="file" class="form-control" id="ufile" name="ufile" accept="*/*" required>
             </div>
         <?php } ?>
-        <div class="form-group">
-            <?php if ($labels === '1') { ?><label for="comment"><?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT'); ?></label><?php } ?>
-            <textarea class="form-control" id="comment" name="comment" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT_DETAIL'); ?>" required></textarea>
-        </div>
+        <?php if ($showcomment === '1') { ?>
+            <div class="form-group">
+                <?php if ($labels === '1') { ?><label for="comment"><?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT'); ?></label><?php } ?>
+                <textarea class="form-control" id="comment" name="comment" placeholder="<?php echo JText::_('MOD_SIMPLECONTACTFORM_COMMENT_DETAIL'); ?>" required></textarea>
+            </div>
+        <?php } ?>
+        <?php if (!empty($nexttext)) { ?>
+            <div class="oc-next-text"><?php echo $nexttext; ?></div>
+        <?php } ?>
 
         <div class="button-group">
             <button type="submit" class="btn btn-default"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBMIT'); ?></button>
