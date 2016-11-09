@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @package OtherCode.Joomla.SimpleContactForm
+ * @package OtherCode.Joomla
  * @subpackage mod_simplecontactform
  * @copyright Copyright (C) 2016 OtherCode. All rights reserved.
- * @version 1.3.0
+ * @version 1.4.0
  * @license MIT
  */
 defined('_JEXEC') or die('Restricted access');
@@ -28,8 +28,7 @@ $contactModel = JFormHelper::loadFieldType('Contact', false);
  * Load the default css if needed
  */
 if ($params->get('defaultcss') === '1') {
-    $document = JFactory::getDocument();
-    $document->addStyleSheet(JUri::base() . 'media/mod_simplecontactform/css/contact.css');
+    JFactory::getDocument()->addStyleSheet(JUri::base() . 'media/mod_simplecontactform/css/contact.css');
 }
 
 /**

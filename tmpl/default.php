@@ -1,12 +1,13 @@
 <?php
 
 /**
- * @package OtherCode.Joomla.SimpleContactForm
+ * @package OtherCode.Joomla
  * @subpackage mod_simplecontactform
  * @copyright Copyright (C) 2016 OtherCode. All rights reserved.
+ * @version 1.4.0
  * @license MIT
  */
-defined('_JEXEC') or die;
+defined('_JEXEC') or die('Restricted access');
 ?>
 
 <div id="oc-simplecontactform" class="<?php echo $moduleclass_sfx ?>">
