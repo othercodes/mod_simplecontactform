@@ -60,7 +60,7 @@ if (isset($send) && $send == $instance) {
 
     if ($input->post->get('destiny', null) !== null) {
 
-        $recipient = $contactModel->getContactEmailByID($input->post->get('destiny'));
+        $recipient = trim($contactModel->getContactEmailByID($input->post->get('destiny')));
 
     } else {
 
@@ -73,9 +73,9 @@ if (isset($send) && $send == $instance) {
          * If ID is NOT 0 we load the required contact email.
          */
         if ($params->get('sendto') === '0') {
-            $recipient = $config->get('mailfrom');
+            $recipient = trim($config->get('mailfrom'));
         } else {
-            $recipient = $contactModel->getContactEmailByID($params->get('sendto'));
+            $recipient = trim($contactModel->getContactEmailByID($params->get('sendto')));
         }
     }
 
