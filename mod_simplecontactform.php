@@ -9,7 +9,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-$instance = md5($params->get('sendto', 0));
+$instance = md5($params->get('sendto', 0) . mt_rand());
 
 /**
  * Load the main systems
@@ -88,8 +88,8 @@ if (isset($send) && $send == $instance) {
      */
     $mailer->setSender(array($email, $name));
     $mailer->addRecipient($recipient);
-    $mailer->setSubject(strtr($subjectTemplate,$context));
-    $mailer->setBody(strtr($commentTemplate,$context));
+    $mailer->setSubject(strtr($subjectTemplate, $context));
+    $mailer->setBody(strtr($commentTemplate, $context));
 
     /**
      * Set the attached file if exists, by default we

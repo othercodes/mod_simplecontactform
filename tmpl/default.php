@@ -55,7 +55,7 @@ defined('_JEXEC') or die('Restricted access');
         <?php if ($showupload === '1') { ?>
             <div class="form-group">
                 <?php if ($labels === '1') { ?><label for="ufile"><?php echo JText::_('MOD_SIMPLECONTACTFORM_UPLOAD'); ?></label><?php } ?>
-                <input type="file" class="form-control" id="ufile" name="ufile" accept="*/*" required>
+                <input type="file" class="form-control" id="ufile" name="ufile" accept="*/*">
             </div>
         <?php } ?>
         <?php if ($showcomment === '1') { ?>
