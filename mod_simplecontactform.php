@@ -9,7 +9,10 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-$instance = md5($params->get('sendto', 0) . mt_rand());
+$instance = md5($params->get('sendto', 0));
+
+$allowedmimetypes = $params->get('allowedmimetypes');
+$allowedfileext = $params->get('allowedfileext');
 
 /**
  * Load the main systems

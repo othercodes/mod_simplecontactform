@@ -7,7 +7,7 @@
     <license>MIT</license>
     <authorEmail>usantisteban@othercode.es</authorEmail>
     <authorUrl>othercode.es</authorUrl>
-    <version>1.4.1</version>
+    <version>1.5.0</version>
     <description>MOD_SIMPLECONTACTFORM_DESC</description>
     <files>
         <filename>mod_simplecontactform.xml</filename>
@@ -24,58 +24,101 @@
     <config>
         <fields name="params">
             <fieldset name="basic" addfieldpath="/modules/mod_simplecontactform/models">
-                <field name="sendto" type="contact" label="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_DESC" />
-                <field name="category" type="category" extension="com_contact" label="MOD_SIMPLECONTACTFORM_FIELD_CATEGORY_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_CATEGORY_DESC" />
-                <field name="showcontactdropdown" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWCONTACTDROPDOWN_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWCONTACTDROPDOWN_DESC">
+                <field name="sendto" type="contact" label="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SENDTO_DESC"/>
+                <field name="category" type="category" extension="com_contact"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_CATEGORY_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_CATEGORY_DESC"/>
+                <field name="showcontactdropdown" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWCONTACTDROPDOWN_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWCONTACTDROPDOWN_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="showemail" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWEMAIL_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWEMAIL_DESC">
+                <field name="showemail" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWEMAIL_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWEMAIL_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="subjecttemplate" type="text" default="" label="MOD_SIMPLECONTACTFORM_FIELD_SUBJECTTEMPLATE_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SUBJECTTEMPLATE_DESC" />
-                <field name="showsubject" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWSUBJECT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWSUBJECT_DESC">
+                <field name="subjecttemplate" type="text" default=""
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SUBJECTTEMPLATE_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SUBJECTTEMPLATE_DESC"/>
+                <field name="showsubject" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWSUBJECT_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWSUBJECT_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="commenttemplate" type="editor" rows="5" default="" filter="raw" label="MOD_SIMPLECONTACTFORM_FIELD_COMMENTTEMPLATE_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_COMMENTTEMPLATE_DESC" />
-                <field name="showcomment" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWCOMMENT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWCOMMENT_DESC">
+                <field name="commenttemplate" type="editor" rows="5" default="" filter="raw"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_COMMENTTEMPLATE_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_COMMENTTEMPLATE_DESC"/>
+                <field name="showcomment" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWCOMMENT_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWCOMMENT_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="showphone" type="radio" class="btn-group btn-group-yesno" default="0" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWPHONE_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWPHONE_DESC">
+                <field name="showphone" type="radio" class="btn-group btn-group-yesno" default="0"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWPHONE_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWPHONE_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="showlabels" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_DESC">
+                <field name="showlabels" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWLABELS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="showreset" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWRESET_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWRESET_DESC">
+                <field name="showreset" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWRESET_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWRESET_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="showupload" type="radio" class="btn-group btn-group-yesno" default="0" label="MOD_SIMPLECONTACTFORM_FIELD_SHOWUPLOAD_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_SHOWUPLOAD_DESC">
+                <field name="showupload" type="radio" class="btn-group btn-group-yesno" default="0"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_SHOWUPLOAD_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_SHOWUPLOAD_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="uploadpath" type="folderlist" default="uploads" directory="images" label="MOD_SIMPLECONTACTFORM_FIELD_UPLOADFORLDER_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_UPLOADFORLDER_DESC" />
-                <field name="defaultcss" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_DESC">
+                <field name="uploadpath" type="folderlist" default="uploads" directory="images"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_UPLOADFORLDER_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_UPLOADFORLDER_DESC"/>
+                <field name="defaultcss" type="radio" class="btn-group btn-group-yesno" default="1"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_DEFAULTCSS_DESC">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="prevtext" type="editor" rows="5" default="" filter="raw" label="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_DESC" />
-                <field name="nexttext" type="editor" rows="5" default="" filter="raw" label="MOD_SIMPLECONTACTFORM_FIELD_NEXTTEXT_LABEL" description="MOD_SIMPLECONTACTFORM_FIELD_NEXTTEXT_DESC" />
+                <field name="prevtext" type="editor" rows="5" default="" filter="raw"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_DESC"/>
+                <field name="nexttext" type="editor" rows="5" default="" filter="raw"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_NEXTTEXT_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_NEXTTEXT_DESC"/>
             </fieldset>
             <fieldset name="advanced">
-                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
-                <field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
-                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+                <field name="allowedmimetypes" type="text"
+                       default="image/jpeg,image/gif,image/png,image/bmp,application/msword,application/excel,application/pdf,application/powerpoint,text/plain,application/x-zip"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_ALLOWEDMIMETYPES_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_ALLOWEDMIMETYPES_DESC"/>
+                <field name="allowedfileext" type="text"
+                       default="bmp,csv,doc,gif,ico,jpg,jpeg,odg,odp,ods,odt,pdf,png,ppt,txt,xcf,xls,BMP,CSV,DOC,GIF,ICO,JPG,JPEG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,TXT,XCF,XLS"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_ALLOWEDFILEEXT_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_ALLOWEDFILEEXT_DESC"/>
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL"
+                       description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+                <field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL"
+                       description="COM_MODULES_FIELD_CACHING_DESC">
                     <option value="1">JGLOBAL_USE_GLOBAL</option>
                     <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
                 </field>
-                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                       description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
                 <field name="cachemode" type="hidden" default="static">
                     <option value="static"></option>
                 </field>
@@ -83,6 +126,8 @@
         </fields>
     </config>
     <updateservers>
-        <server name="OtherCode Extension Directory" priority="1" type="collection">http://updates.othercode.es/index.xml</server>
+        <server name="OtherCode Extension Directory" priority="1" type="collection">
+            http://updates.othercode.es/index.xml
+        </server>
     </updateservers>
 </extension>
