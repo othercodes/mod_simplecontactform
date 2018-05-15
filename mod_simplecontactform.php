@@ -53,13 +53,13 @@ if (isset($send) && $send == $instance) {
     $phone = $input->post->get('phone', null);
     $comment = htmlspecialchars($input->post->get('comment', null, 'str'));
 
-    $context = array(
+    $context = [
         '{email}' => $email,
         '{name}' => $name,
         '{phone}' => $phone,
         '{subject}' => $subject,
         '{comment}' => $comment,
-    );
+    ];
 
     if ($input->post->get('destiny', null) !== null) {
 
@@ -89,7 +89,7 @@ if (isset($send) && $send == $instance) {
      *  - subject
      *  - body
      */
-    $mailer->setSender(array($email, $name));
+    $mailer->setSender([$email, $name]);
     $mailer->addRecipient($recipient);
     $mailer->setSubject(strtr($subjectTemplate, $context));
     $mailer->setBody(strtr($commentTemplate, $context));
@@ -114,15 +114,35 @@ if (isset($send) && $send == $instance) {
      */
     $issend = $mailer->Send();
     if ($issend !== true) {
-        JFactory::getApplication()->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(), 'error');
+        JFactory::getApplication()
+            ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(), 'error');
     } else {
-        JFactory::getApplication()->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'), 'message');
+        JFactory::getApplication()
+            ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'), 'message');
+
+
+        $autorespond = $params->get('autorespond');
+        if (isset($autorespond)) {
+
+            /**
+             * Send the auto-respond message automatically if
+             * the auto-respond message exists.
+             */
+            $response = JFactory::getMailer();
+            $response->setSender([JURI::base(), $config->get('sitename')]);
+            $response->addRecipient($email);
+            $response->setSubject($config->get('sitename'));
+            $response->setBody($params->get('autorespond'));
+
+            $response->Send();
+        }
+
     }
 }
 
 $showcontactdropdown = $params->get('showcontactdropdown');
 
-$contactList = array();
+$contactList = [];
 if ($showcontactdropdown === '1') {
     $contactList = $contactModel->getContactsByCategoryID($params->get('category'));
 }

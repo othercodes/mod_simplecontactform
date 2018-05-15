@@ -92,6 +92,9 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <field name="autorespond" type="editor" rows="5" default="" filter="raw"
+                       label="MOD_SIMPLECONTACTFORM_FIELD_AUTORESPOND_LABEL"
+                       description="MOD_SIMPLECONTACTFORM_FIELD_AUTORESPOND_DESC"/>
                 <field name="prevtext" type="editor" rows="5" default="" filter="raw"
                        label="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_LABEL"
                        description="MOD_SIMPLECONTACTFORM_FIELD_PREVTEXT_DESC"/>

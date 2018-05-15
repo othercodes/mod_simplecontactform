@@ -61,7 +61,7 @@ defined('_JEXEC') or die('Restricted access');
         <?php if ($showcontactdropdown === '1') { ?>
             <div class="form-group">
                 <?php if ($labels === '1') { ?>
-                    <label for="destiny"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SUBJECT'); ?></label>
+                    <label for="destiny"><?php echo JText::_('MOD_SIMPLECONTACTFORM_SENDTO_LIST'); ?></label>
                 <?php } ?>
                 <select class="form-control" id="destiny" name="destiny" required>
                     <?php foreach ($contactList as $item) { ?>
