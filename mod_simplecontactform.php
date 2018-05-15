@@ -94,8 +94,6 @@ if (isset($send) && $send == $instance) {
     $mailer->setSubject(strtr($subjectTemplate, $context));
     $mailer->setBody(strtr($commentTemplate, $context));
 
-    var_dump($file['size']);
-
     /**
      * Set the attached file if exists, by default we
      * save the uploaded file in the images/uploads but
