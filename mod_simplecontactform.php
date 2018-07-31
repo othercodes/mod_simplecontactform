@@ -157,5 +157,6 @@ $showupload = $params->get('showupload');
 $prevtext = $params->get('prevtext');
 $nexttext = $params->get('nexttext');
 $moduleclass_sfx = $params->get('moduleclass_sfx');
+$layout = $params->get('layout', 'default');
 
-require JModuleHelper::getLayoutPath('mod_simplecontactform');
+require JModuleHelper::getLayoutPath('mod_simplecontactform', $layout);
