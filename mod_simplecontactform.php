@@ -62,7 +62,6 @@ if (isset($send) && $send == $instance) {
     ];
 
     if ($input->post->get('destiny', null) !== null) {
-
         $recipient = trim($contactModel->getContactEmailByID($input->post->get('destiny')));
 
     } else {
@@ -92,6 +91,8 @@ if (isset($send) && $send == $instance) {
     $mailer->setSender([$email, $name]);
     $mailer->addRecipient($recipient);
     $mailer->setSubject(strtr($subjectTemplate, $context));
+    $mailer->isHtml(true);
+    $mailer->Encoding = 'base64';
     $mailer->setBody(strtr($commentTemplate, $context));
 
     /**
@@ -100,7 +101,6 @@ if (isset($send) && $send == $instance) {
      * we can change this folder in the module configuration
      */
     if (isset($file['size']) && $file['size'] > 0) {
-
         $filename = JFile::makeSafe($file['name']);
         $destiny = JPATH_SITE . "/images/" . $params->get('uploadpath') . "/" . date('YmdHis') . '-' . $filename;
 
@@ -120,9 +120,8 @@ if (isset($send) && $send == $instance) {
         JFactory::getApplication()
             ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'), 'message');
 
-
         $autorespond = $params->get('autorespond');
-        if (isset($autorespond)) {
+        if (!empty($autorespond)) {
 
             /**
              * Send the auto-respond message automatically if
@@ -132,11 +131,12 @@ if (isset($send) && $send == $instance) {
             $response->setSender([JURI::base(), $config->get('sitename')]);
             $response->addRecipient($email);
             $response->setSubject($config->get('sitename'));
+            $mailer->isHtml(true);
+            $mailer->Encoding = 'base64';
             $response->setBody($params->get('autorespond'));
 
             $response->Send();
         }
-
     }
 }
 
