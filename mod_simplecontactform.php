@@ -11,6 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 $instance = md5($params->get('sendto', 0));
 
+$alerts = [];
 $allowedmimetypes = $params->get('allowedmimetypes');
 $allowedfileext = $params->get('allowedfileext');
 
@@ -116,9 +117,20 @@ if (isset($send) && $send == $instance) {
     if ($issend !== true) {
         JFactory::getApplication()
             ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(), 'error');
+
+        $alerts[] = [
+            'type' => 'error',
+            'message' => JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(),
+        ];
+
     } else {
         JFactory::getApplication()
             ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'), 'message');
+
+        $alerts[] = [
+            'type' => 'success',
+            'message' => JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'),
+        ];
 
         $autorespond = $params->get('autorespond');
         if (!empty($autorespond)) {
