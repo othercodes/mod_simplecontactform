@@ -92,6 +92,14 @@ defined('_JEXEC') or die('Restricted access');
             </div>
         <?php } ?>
 
+        <?php if ($captchaEnabled) { ?>
+            <div class="g-block size-100">
+                <div class="control-group">
+                    <?php echo $form->renderField('captcha'); ?>
+                </div>
+            </div>
+        <?php } ?>
+
         <?php if (!empty($nexttext)) { ?>
             <div class="oc-next-text"><?php echo $nexttext; ?></div>
         <?php } ?>
