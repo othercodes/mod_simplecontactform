@@ -47,8 +47,10 @@ $send = $input->post->get('send', null);
 
 try {
 
-    $captchaSet = $config->get('captcha', null);
-    if (isset($captchaSet)) {
+    $captchaEnabled = false;
+    $captchaSet = $config->get('captcha', '0');
+
+    if ($captchaSet !== '0') {
 
         $captcha = JCaptcha::getInstance($captchaSet);
         $captchaEnabled = count(current(array_filter(JPluginHelper::getPlugin('captcha'),
