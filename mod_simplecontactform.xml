@@ -15,8 +15,12 @@
         <filename>index.html</filename>
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
-        <folder>language</folder>
-        <folder>models</folder>
+        <filename>language/en-GB/en-GB.mod_simplecontactform.ini</filename>
+        <filename>language/en-GB/en-GB.mod_simplecontactform.sys.ini</filename>
+        <filename>language/es-ES/es-ES.mod_simplecontactform.ini</filename>
+        <filename>language/es-ES/es-ES.mod_simplecontactform.sys.ini</filename>
+        <filename>models/contact.php</filename>
+        <filename>models/forms/default.xml</filename>
     </files>
     <media folder="media" destination="mod_simplecontactform">
         <folder>css</folder>
