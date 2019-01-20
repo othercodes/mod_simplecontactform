@@ -2,12 +2,12 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
     <name>Simple Contact Form</name>
     <author>Unay Santisteban</author>
-    <creationDate>Julio 2016</creationDate>
+    <creationDate>January 2019</creationDate>
     <copyright>Copyright (C) 2016 OtherCode. All rights reserved.</copyright>
     <license>MIT</license>
     <authorEmail>usantisteban@othercode.es</authorEmail>
-    <authorUrl>othercode.es</authorUrl>
-    <version>1.7.0</version>
+    <authorUrl>https://othercode.es</authorUrl>
+    <version>VERSION</version>
     <description>MOD_SIMPLECONTACTFORM_DESC</description>
     <files>
         <filename>mod_simplecontactform.xml</filename>
@@ -134,7 +134,7 @@
     </config>
     <updateservers>
         <server name="OtherCode Extension Directory" priority="1" type="collection">
-            http://updates.othercode.es/index.xml
+            https://updates.othercode.es/index.xml
         </server>
     </updateservers>
 </extension>
