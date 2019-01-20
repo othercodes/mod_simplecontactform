@@ -13,26 +13,26 @@ echo "**********************"
 
 echo "Cleaning..."
 cd $ext_path
-rm -rf $ext_path/builds
-mkdir -p $ext_path/builds/$ext_name
+rm -rf $ext_path/_builds $ext_path/_builds/$ext_name
+mkdir -p $ext_path/_builds $ext_path/_builds/$ext_name
 
 echo "Building directories..."
-for directory in $(find ./ -type d | grep -vE ".git|builds|.idea" | sed 's/.\///'); do
+for directory in $(find ./ -type d | grep -vE ".git|_builds|.idea|LICENSE|.md$" | sed 's/.\///'); do
     if [ ! -z "$directory" ]; then
-        mkdir -p $ext_path/builds/$ext_name/$directory
+        mkdir -p $ext_path/_builds/$ext_name/$directory
     fi
 done
 
 echo "Copying files..."
-for file in $(find ./ -type f | grep -vE ".git|builds|.idea|.sh$"); do
-    cp -r $file $ext_path/builds/$ext_name/$file
+for file in $(find ./ -type f | grep -vE ".git|_builds|.idea|.sh$|LICENSE|.md$"); do
+    cp -r $file $ext_path/_builds/$ext_name/$file
 done
 
-perl -pi -e 's/VERSION/'$version'/g' $ext_path/builds/$ext_name/$ext_name.xml
+perl -pi -e 's/VERSION/'$version'/g' $ext_path/_builds/$ext_name/$ext_name.xml
 
 echo "Building zip package..."
-cd $ext_path/builds
-zip -rq $ext_name.zip $ext_name
-rm -rf $ext_name
+cd $ext_path/_builds
+zip -rq $ext_path/_builds/$ext_name.zip $ext_name
+rm -rf $ext_path/_builds/$ext_name
 
 echo "Done!"
