@@ -1,9 +1,9 @@
 # Simple Contact Form
 
-[Simple Contact Form](http://othercode.es/blog/40-joomla/66-simple-contact-form.html) for Joomla 3.5
+Simple Contact Form for Joomla 3.x
 
 ## Installation
 
-You only have to donwload the zip and install normally in Joomla!
+You only have to download the zip and install normally in Joomla!
 
 

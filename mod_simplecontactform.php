@@ -11,6 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 $instance = md5($params->get('sendto', 0));
 
+$alerts = [];
 $allowedmimetypes = $params->get('allowedmimetypes');
 $allowedfileext = $params->get('allowedfileext');
 
@@ -19,6 +20,7 @@ $allowedfileext = $params->get('allowedfileext');
  *  - Input
  *  - Mailer
  *  - Configuration
+ *  - Form
  */
 $input = JFactory::getApplication()->input;
 $mailer = JFactory::getMailer();
@@ -28,6 +30,7 @@ $form = new JForm('SCF');
 $form->loadFile(JPATH_ROOT . '/modules/mod_simplecontactform/forms/default.xml');
 
 JFormHelper::addFieldPath(__DIR__ . '/models');
+/** @var JFormFieldContact $contactModel */
 $contactModel = JFormHelper::loadFieldType('Contact', false);
 
 /**
@@ -44,24 +47,25 @@ $send = $input->post->get('send', null);
 
 try {
 
-    if ($config->get('captcha') != '0') {
+    $captchaEnabled = false;
+    $captchaSet = $config->get('captcha', '0');
 
-        $captcha = JCaptcha::getInstance($config->get('captcha'));
-        $captchaSet = $params->get('captcha', JFactory::getApplication()->get('captcha', '0'));
+    if ($captchaSet !== '0') {
+
+        $captcha = JCaptcha::getInstance($captchaSet);
         $captchaEnabled = count(current(array_filter(JPluginHelper::getPlugin('captcha'),
             function ($plugin) use ($captchaSet) {
                 return $captchaSet === $plugin->name;
             }))) === 0 ? false : true;
 
-        $captcha_success = false;
         $captcha_response = $input->post->get('g-recaptcha-response', null);
 
+        $captcha_success = false;
         if (isset($captcha_response)) {
             $captcha_success = $captcha->checkAnswer(trim($captcha_response));
         }
 
     } else {
-
         $captcha_success = true;
     }
 
@@ -89,7 +93,6 @@ try {
         ];
 
         if ($input->post->get('destiny', null) !== null) {
-
             $recipient = trim($contactModel->getContactEmailByID($input->post->get('destiny')));
 
         } else {
@@ -129,7 +132,6 @@ try {
          * we can change this folder in the module configuration
          */
         if (isset($file['size']) && $file['size'] > 0) {
-
             $filename = JFile::makeSafe($file['name']);
             $destiny = JPATH_SITE . "/images/" . $params->get('uploadpath') . "/" . date('YmdHis') . '-' . $filename;
 
@@ -145,10 +147,20 @@ try {
         if ($issend !== true) {
             JFactory::getApplication()
                 ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(), 'error');
+
+            $alerts[] = [
+                'type' => 'error',
+                'message' => JText::_('MOD_SIMPLECONTACTFORM_SEND_FAIL') . $issend->__toString(),
+            ];
+
         } else {
             JFactory::getApplication()
                 ->enqueueMessage(JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'), 'message');
 
+            $alerts[] = [
+                'type' => 'success',
+                'message' => JText::_('MOD_SIMPLECONTACTFORM_SEND_SUCCESS'),
+            ];
 
             $autorespond = $params->get('autorespond');
             if (isset($autorespond)) {
@@ -172,7 +184,13 @@ try {
     }
 
 } catch (\Exception $e) {
+
     JFactory::getApplication()->enqueueMessage('Captcha: ' . $e->getMessage(), 'error');
+
+    $alerts[] = [
+        'type' => 'error',
+        'message' => 'Captcha: ' . $e->getMessage(),
+    ];
 }
 
 $showcontactdropdown = $params->get('showcontactdropdown');
@@ -192,5 +210,6 @@ $showupload = $params->get('showupload');
 $prevtext = $params->get('prevtext');
 $nexttext = $params->get('nexttext');
 $moduleclass_sfx = $params->get('moduleclass_sfx');
+$layout = $params->get('layout', 'default');
 
-require JModuleHelper::getLayoutPath('mod_simplecontactform', $params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath('mod_simplecontactform', $layout);
