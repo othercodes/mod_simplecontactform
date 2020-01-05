@@ -2,7 +2,7 @@
 
 ext_path=`pwd`
 ext_name=`find ./ -maxdepth 1 -type f | grep .xml | sed 's/.xml//' | sed 's/.\///'`
-version="1.7.0"
+version="1.7.1"
 
 echo "**********************"
 echo "Building: "$ext_name
