@@ -27,7 +27,7 @@ $mailer = JFactory::getMailer();
 $config = JFactory::getConfig();
 
 $form = new JForm('SCF');
-$form->loadFile(JPATH_ROOT . '/modules/mod_simplecontactform/forms/default.xml');
+$form->loadFile(JPATH_ROOT . '/modules/mod_simplecontactform/models/forms/default.xml');
 
 JFormHelper::addFieldPath(__DIR__ . '/models');
 /** @var JFormFieldContact $contactModel */
